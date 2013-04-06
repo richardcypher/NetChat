@@ -1,7 +1,4 @@
 import java.io.IOException;
-import java.net.InetAddress;
-import java.util.ArrayList;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
