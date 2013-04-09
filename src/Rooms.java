@@ -128,7 +128,6 @@ public class Rooms extends Composite {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ShutdownSignalException e) {
-			//e.printStackTrace();
 		} catch (ConsumerCancelledException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
