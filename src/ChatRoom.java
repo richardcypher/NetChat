@@ -17,6 +17,8 @@ import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.custom.CTabFolder2Adapter;
+import org.eclipse.swt.custom.CTabFolderEvent;
 
 public class ChatRoom extends Shell {
 
@@ -197,8 +199,14 @@ public class ChatRoom extends Shell {
 				return;
 			}
 		}
-		Rooms room = new Rooms(tabFolder, SWT.NONE, roomID, ip, nameEnter.getText());
+		final Rooms room = new Rooms(tabFolder, SWT.NONE, roomID, ip, nameEnter.getText());
 		CTabItem tbtmNewItem = new CTabItem(tabFolder, SWT.CLOSE);
+		tbtmNewItem.addDisposeListener(new DisposeListener() {
+			public void widgetDisposed(DisposeEvent arg0) {
+				ChatRoom.this.room.remove(room);
+				room.Leave();
+			}
+		});
 		tbtmNewItem.setText(roomID);
 		tbtmNewItem.setControl(room);
 		tabFolder.setSelection(tbtmNewItem);
