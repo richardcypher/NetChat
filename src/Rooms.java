@@ -149,7 +149,6 @@ public class Rooms extends Composite {
 				QueueingConsumer.Delivery delivery = consumer.nextDelivery();
 				String message = new String(delivery.getBody());
 				int index = message.indexOf(":");
-				System.out.println(message);
 				if (index == -1) {
 					if (message.endsWith("enter the room")) {
 						String to = message.substring(0, message.indexOf(" "));
